@@ -85,8 +85,44 @@ int ha_create_table(THD *thd, const char *path,
 
   - `create` => virtual that must be provided by engine implementations, in our case, its innodb.
 
-## ha_innodb.cc
+## `ha_innodb.cc`
 
   - `int ha_innobase::create`
 
-  - 
+  - `create_table_info_t::	create_table`
+
+  - `create_table_info_t::create_table_def`
+
+ 
+## `row0mysql.cc`
+
+  - `dberr_t row_create_table_for_mysql`
+
+
+## `que0que.cc`
+
+> need to dig more, but basically executes all innodb commands in a thread / a a queue.
+
+- `que_thr_step` big switch statement on commands
+
+- `dict_create_table_step`
+
+
+## `dict0crea.cc`
+
+  - `que_thr_t* dict_create_table_step`
+
+  - `dict_build_table_def_step`
+
+  - `dict_build_tablespace_for_table`
+
+  - `fil_make_filepath`
+
+  - `fil_ibd_create`
+
+
+## `fil0fil.cc`
+
+  - fil_ibd_create
+
+  - TODO, what is written in there :o
